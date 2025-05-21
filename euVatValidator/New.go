@@ -6,9 +6,9 @@ import "github.com/thereisnoplanb/vies"
 //
 // # Parameters:
 //
-//	checkEuVatIsRegisteredInVies bool
+//	checkEuVatIsRegisteredInVies bool [OPTIONAL]
 //
-// Sets global flag to check EU VAT is registered in VIES (VAT Information Exchange System) if checkEuVatIsRegisteredInVies is set to true. [OPTIONAL]
+// Sets global flag to check EU VAT is registered in VIES (VAT Information Exchange System) if checkEuVatIsRegisteredInVies is set to true.
 //
 // Default value is false.
 //

@@ -15,9 +15,10 @@ import (
 //
 // EU VAT, for example: PL7251868136.
 //
-//	checkEuVatIsRegisteredInVies bool
+//	checkEuVatIsRegisteredInVies bool [OPTIONAL]
 //
-// After validation checks EU VAT is registered in VIES (VAT Information Exchange System) if checkEuVatIsRegisteredInVies is set to true. [OPTIONAL]
+// If parameter checkEuVatIsRegisteredInVies is set or is ommited but global checkEuVatIsRegisteredInVies is set then
+// after validation EU VAT is checked to be registered in VIES (VAT Information Exchange System)
 //
 // # Returns:
 //
@@ -37,7 +38,7 @@ import (
 //
 // # Remarks
 //
-// If checkEuVatIsRegisteredInVies is not set a global checkEuVatIsRegisteredInVies defined when creating new validator by New() method is used.
+// If checkEuVatIsRegisteredInVies is ommited a global checkEuVatIsRegisteredInVies defined when creating new validator by New() method is used.
 func (validator *Validator) Validate(euVat string, checkEuVatIsRegisteredInVies ...bool) (status Status.Enum, isRegisteredInVies bool, err error) {
 
 	if len(euVat) < 3 {
@@ -64,7 +65,7 @@ func (validator *Validator) Validate(euVat string, checkEuVatIsRegisteredInVies 
 		}
 	}
 
-	if len(checkEuVatIsRegisteredInVies) > 0 && checkEuVatIsRegisteredInVies[0] || len(checkEuVatIsRegisteredInVies) == 0 && validator.globalCheckEuVatIsRegisteredInVies {
+	if (len(checkEuVatIsRegisteredInVies) > 0 && checkEuVatIsRegisteredInVies[0]) || (len(checkEuVatIsRegisteredInVies) == 0 && validator.globalCheckEuVatIsRegisteredInVies) {
 		isRegisteredInVies, err = validator.viesClient.Validate(euVat)
 	}
 	return Status.Valid, isRegisteredInVies, err
