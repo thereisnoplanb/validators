@@ -4,7 +4,7 @@ import (
 	"regexp"
 
 	"github.com/thereisnoplanb/validators/euVatValidator/enums/Status"
-	"github.com/thereisnoplanb/vies/enums/CountryCode"
+	"github.com/thereisnoplanb/vies/enums/ViesCountryCode"
 )
 
 // Validates EU VAT against length, pattern for EU country and checksum (if available).
@@ -45,21 +45,21 @@ func (validator *Validator) Validate(euVat string, checkEuVatIsRegisteredInVies 
 		return Status.IncorrectLength, false, nil
 	}
 
-	countryCode := CountryCode.Enum(euVat[:2])
+	viesCountryCode := ViesCountryCode.Enum(euVat[:2])
 
-	if !countryCode.IsDefined() {
+	if !viesCountryCode.IsDefined() {
 		return Status.UnrecognizedCountryCode, false, nil
 	}
 
 	vatNumber := euVat[2:]
 
-	if pattern, ok := patterns[countryCode]; ok {
+	if pattern, ok := patterns[viesCountryCode]; ok {
 		if matched, err := regexp.MatchString(pattern, vatNumber); err != nil || !matched {
 			return Status.InvalidFormat, false, err
 		}
 	}
 
-	if checksum, ok := checksums[countryCode]; ok {
+	if checksum, ok := checksums[viesCountryCode]; ok {
 		if checksum != nil && !checksum(vatNumber) {
 			return Status.IncorrectChecksum, false, nil
 		}

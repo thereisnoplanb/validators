@@ -1,38 +1,38 @@
 package euVatValidator
 
-import "github.com/thereisnoplanb/vies/enums/CountryCode"
+import "github.com/thereisnoplanb/vies/enums/ViesCountryCode"
 
 type checksum func(euVat string) (ok bool)
 
-var checksums = map[CountryCode.Enum]checksum{
-	CountryCode.Austria:         nil,
-	CountryCode.Belgium:         nil,
-	CountryCode.Bulgaria:        nil,
-	CountryCode.Croatia:         nil,
-	CountryCode.Cyprus:          nil,
-	CountryCode.Czechia:         nil,
-	CountryCode.Denmark:         nil,
-	CountryCode.Estonia:         nil,
-	CountryCode.Finland:         nil,
-	CountryCode.France:          nil,
-	CountryCode.Germany:         checksumGermany,
-	CountryCode.Greece:          nil,
-	CountryCode.Hungary:         nil,
-	CountryCode.Ireland:         nil,
-	CountryCode.Italy:           checksumItaly,
-	CountryCode.Latvia:          nil,
-	CountryCode.Lithuania:       nil,
-	CountryCode.Luxembourg:      nil,
-	CountryCode.Malta:           nil,
-	CountryCode.Netherlands:     nil,
-	CountryCode.NorthernIreland: nil,
-	CountryCode.Poland:          checksumPoland,
-	CountryCode.Portugal:        nil,
-	CountryCode.Romania:         nil,
-	CountryCode.Slovakia:        nil,
-	CountryCode.Slovenia:        nil,
-	CountryCode.Spain:           nil,
-	CountryCode.Sweden:          nil,
+var checksums = map[ViesCountryCode.Enum]checksum{
+	ViesCountryCode.Austria:         nil,
+	ViesCountryCode.Belgium:         nil,
+	ViesCountryCode.Bulgaria:        nil,
+	ViesCountryCode.Croatia:         nil,
+	ViesCountryCode.Cyprus:          nil,
+	ViesCountryCode.Czechia:         nil,
+	ViesCountryCode.Denmark:         nil,
+	ViesCountryCode.Estonia:         nil,
+	ViesCountryCode.Finland:         nil,
+	ViesCountryCode.France:          nil,
+	ViesCountryCode.Germany:         checksumGermany,
+	ViesCountryCode.Greece:          nil,
+	ViesCountryCode.Hungary:         nil,
+	ViesCountryCode.Ireland:         nil,
+	ViesCountryCode.Italy:           checksumItaly,
+	ViesCountryCode.Latvia:          nil,
+	ViesCountryCode.Lithuania:       nil,
+	ViesCountryCode.Luxembourg:      nil,
+	ViesCountryCode.Malta:           nil,
+	ViesCountryCode.Netherlands:     nil,
+	ViesCountryCode.NorthernIreland: nil,
+	ViesCountryCode.Poland:          checksumPoland,
+	ViesCountryCode.Portugal:        nil,
+	ViesCountryCode.Romania:         nil,
+	ViesCountryCode.Slovakia:        nil,
+	ViesCountryCode.Slovenia:        nil,
+	ViesCountryCode.Spain:           nil,
+	ViesCountryCode.Sweden:          nil,
 }
 
 func checksumPoland(vatNumber string) (ok bool) {
