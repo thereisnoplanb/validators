@@ -1,4 +1,4 @@
-package PostalCodeValidator
+package postalCodeValidator
 
 import (
 	"reflect"

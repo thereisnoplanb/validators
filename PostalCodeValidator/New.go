@@ -1,4 +1,4 @@
-package PostalCodeValidator
+package postalCodeValidator
 
 // Creates new postal code validator.
 //
