@@ -1,8 +1,6 @@
 package euVatValidator
 
-import (
-	"github.com/thereisnoplanb/vies/enums/ViesCountryCode"
-)
+import "github.com/thereisnoplanb/vies/enums/ViesCountryCode"
 
 var patterns = map[ViesCountryCode.Enum]string{
 	ViesCountryCode.Austria:         `U[0-9]{8}`,
